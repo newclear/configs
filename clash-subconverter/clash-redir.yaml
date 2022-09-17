@@ -13,6 +13,7 @@ port: 8123
 
 # Linux 和 macOS 的 redir 代理端口 (如需使用此功能，请取消注释)
 redir-port: 1081
+tproxy-port: 1088
 
 routing-mark: 255
 
