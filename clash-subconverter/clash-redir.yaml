@@ -133,3 +133,16 @@ dns:
 #   DoH: 以 https:// 开头的 DNS 服务器。拥有更好的伪装性，且几乎不可能被运营商或网络管理封锁，但查询效率和安全性可能略低。
 #   DoT: 以 tls:// 开头的 DNS 服务器。拥有更高的安全性和查询效率，但端口有可能被管制或封锁。
 #   若要了解更多关于 DoH/DoT 相关技术，请自行查阅规范文档。
+
+script:
+  engine: expr # or starlark (10x to 20x slower)
+  shortcuts:
+    # quic: network == 'udp' and dst_port == 443
+    # curl: resolve_process_name() == 'curl'
+    gmail: dst_port == 993 and host == 'imap.gmail.com' or dst_port == 465 and host == 'smtp.gmail.com'
+    github: dst_port == 22 and host == 'github.com'
+
+# proxies:
+# proxy-groups:
+# rule-providers:
+# rules:
